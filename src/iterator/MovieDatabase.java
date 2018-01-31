@@ -1,4 +1,4 @@
-package Iterator;
+package iterator;
 
 public class MovieDatabase implements IAggregate {
     private Movie[] movies;

@@ -1,9 +1,7 @@
 package command;
 
-import Iterator.*;
-import com.sun.org.apache.bcel.internal.generic.MONITORENTER;
+import iterator.*;
 import state.EntertainementSystemState;
-import state.StatusOne;
 
 public class EntertainementSystem {
 
@@ -30,8 +28,7 @@ public class EntertainementSystem {
             if (actualIterator.toString().equals("Music")) {
                 Music music = (Music) actualIterator.next();
                 System.out.println(music.getSongname());
-            }
-            else {
+            } else {
                 Movie movie = (Movie) actualIterator.next();
                 System.out.println(movie.getMoviename());
             }
@@ -41,17 +38,17 @@ public class EntertainementSystem {
 
     public void forward() {
         if (entertainementSystemState.getState().toString().equals("Zero")) {
-            if (actualIterator.toString().equals("Music"))
-            {
+            if (actualIterator.toString().equals("Music")) {
                 actualIterator = movieIterator;
+            } else if (actualIterator.toString().equals("Movie")) {
+                actualIterator = musiciterator;
             }
 
         } else {
             if (actualIterator.toString().equals("Music")) {
                 Music music = (Music) actualIterator.next();
                 System.out.println(music.getSongname());
-            }
-            else {
+            } else {
                 Movie movie = (Movie) actualIterator.next();
                 System.out.println(movie.getMoviename());
             }
@@ -64,10 +61,20 @@ public class EntertainementSystem {
     public void backward() {
         if (entertainementSystemState.getState().toString().equals("Zero")) {
 
-            if (actualIterator.toString().equals("Movie")){
+            if (actualIterator.toString().equals("Movie")) {
                 actualIterator = musiciterator;
+            } else if (actualIterator.toString().equals("Music")) {
+                actualIterator = movieIterator;
             }
         } else {
+            if (actualIterator.toString().equals("Music")) {
+                Music music = (Music) actualIterator.before();
+                System.out.println(music.getSongname());
+            } else {
+                Movie movie = (Movie) actualIterator.before();
+                System.out.println(movie.getMoviename());
+            }
+
 
         }
 
@@ -78,8 +85,6 @@ public class EntertainementSystem {
             entertainementSystemState.promote();
             musiciterator.reset();
             movieIterator.reset();
-
-
         }
 
     }
