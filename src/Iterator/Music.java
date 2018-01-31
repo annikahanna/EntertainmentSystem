@@ -7,7 +7,7 @@ public class Music {
         return songname;
     }
 
-    public void setSongname(String songname) {
+    public Music(String songname) {
         this.songname = songname;
     }
 }

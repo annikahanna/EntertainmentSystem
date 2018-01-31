@@ -7,7 +7,7 @@ public class Movie {
         return moviename;
     }
 
-    public void setMoviename(String moviename) {
+    public Movie (String moviename) {
         this.moviename = moviename;
     }
 }
